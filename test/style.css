@@ -31,21 +31,29 @@ background-color: #1c57b5
 
 .container {
     display: grid;
-    grid-template-columns: 3fr 5fr 3fr;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: 5fr 5fr auto;
+    /* grid-template-rows: 2fr 2fr 5fr 5fr 1fr; */
     grid-template-areas:
-        "top top top"
-        "left center right"
-        "bottom bottom bottom";
+        "top top top" 10fr
+        "center center right" 2fr
+        "center center right" 5fr
+        "center center right" 5fr
+        "bottom bottom bottom" 1fr
+    ;
  }
 
  .header {
     grid-area: top;
  }
- .content {
+
+.content {
      grid-area: center;
  }
  
+#main_article {
+    grid-area: center;
+}
+
  .articles {
      grid-area: right;
  }
@@ -55,4 +63,8 @@ background-color: #1c57b5
  
  .ads {
     grid-area: left;
+ }
+
+ #main_header {
+    grid-area: center;
  }

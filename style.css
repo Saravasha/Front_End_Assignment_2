@@ -7,13 +7,28 @@ body {
     width: 1024px;
 }
 
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto;
+    grid-template-rows: 1fr 1fr 2fr 2fr auto;
+    grid-template-areas: 
+    "header header header header header"
+    "main-1 . . . sidebar"
+    "main-2 main-2 main-2 main-2 sidebar"
+    "main-3 main-3 main-4 main-4 sidebar"
+    "footer footer footer footer footer"
+    ;  
+}
+
 nav {   
+    grid-area: header;
     display: flex;
     background-color: rgb(0, 240, 240);
     text-align: center;
 }
 
 #navsitename {
+    grid-area: header;
     background-color: red;
     outline: 1px solid black;
     flex-basis: 20%;
@@ -22,6 +37,7 @@ nav {
 }
 
 #navoptions {
+    grid-area: header;
     display: flex;
     justify-content: flex-start;
     margin: 0;
@@ -33,7 +49,8 @@ a {
     align-self: center;
 }
 
-    #other_stuff {        
+    #other_stuff {     
+        grid-area: header;   
         display: flex;
         list-style-type: none;
         background-color: white;
@@ -43,6 +60,7 @@ a {
     }
 
     #about {
+        grid-area: header;
         display: flex;
         list-style-type: none;
         background-color: green;
@@ -52,6 +70,7 @@ a {
     }
 
     #connect {
+        grid-area: header;
         display: flex;
         list-style-type: none;
         background-color: red;
@@ -65,79 +84,80 @@ a {
 #navlogin {
     display: flex;
     background-color: rgba(255, 255, 255, 0.8);
-    outline: 1px solid grey;
+    outline: 1px solid black;
     flex-basis: 20%;
     justify-content: center;
 }
 
-div#container {
-    background-color: blueviolet;
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    grid-template-rows: 1fr 1fr 1fr auto;
-    grid-template-areas: 
-    "main-1 . sidebar"
-    "main-2 main-2 sidebar"
-    "main-3 main-4 sidebar"
-    "footer footer footer"
-    ;
-}
 
 /*Main content */ 
 
+
+
 main {
-    background-color: red;
-    outline: 1px solid black;
-    display: flex;
+    display: grid;
+    grid-area: 1 / 1 / span 4 /  span 4 ;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
 }
 
 
-div#main_header h2 {
+#headline h2 {
     color: cadetblue;
     padding-left: 1%;
 }
 
-div#main_header p {
+#headline p {
     color: blanchedalmond;
     padding-left: 1%;
 }
-div#main_header {
-    
-    display: flex;
-    flex-flow: wrap;
+
+#headline {    
+    display: grid;
+    /* flex-flow: wrap; */
+    grid-template-columns: subgrid;
     grid-area: main-1;
-    background-color: black;
+    background-color: hotpink;
     outline: 1px solid black;
-
 }
 
 
-article#main_article {
+#first_article {
+    display: flex;
+    flex-flow: column;
     grid-area: main-2;
+    background-color: chartreuse;
+    grid-template-columns: subgrid;
+    grid-template-rows: auto 1fr;
     outline: 1px solid black;
     overflow-wrap: normal;
 
 }
-article#article1 {
-
+#second_article {
+    display: flex;
+    flex-flow: column;
     grid-area: main-3;
+    grid-template-columns: subgrid;
     outline: 1px solid black;
     overflow-wrap: normal;
 }
 
-article#article2 { 
+#third_article { 
+    display: flex;
+    flex-flow: column;
     grid-area: main-4;
-    outline: 1px solid black;
+    grid-template-columns: subgrid;
+    outline: 5px solid black(1, 83, 15);
     overflow-wrap: normal;
 }
 
 img#sexybord {
-
     width: 33%;
+    
 
 } 
 
-article > p {
+article p {
     color: rgb(0, 0, 0);
     padding-left: 1%;
 }
@@ -145,6 +165,10 @@ article > p {
 /* Aside */
 
 aside {
+
+    display: grid;
+    align-items: center;
+    flex-flow: row nowrap;
     grid-area: sidebar;
     outline: 1px solid black;
     background-color: rgb(219, 5, 5);
@@ -153,6 +177,10 @@ aside {
 }
 
 aside > ul {
+    display: flex;
+    flex-flow: column wrap;
+    grid-area: sidebar;
+    align-items: center;
     outline: 5px solid black;
     background-color: aqua;
 }
@@ -162,8 +190,14 @@ aside > ul > h3 {
     color: violet;
 }
 
+aside div {
+    margin: -70% 5% 5% 5%;
+    outline: 2px solid black;
+}
+
 /* Footer */ 
 footer {
+    display: grid;
     grid-area: footer;
     background-color: lightgreen;
     outline: 1px solid black;
